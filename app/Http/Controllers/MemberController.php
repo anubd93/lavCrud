@@ -77,4 +77,28 @@ class MemberController extends Controller
         return redirect('/');
     }
 
+    public function dataTypeChange()
+    {
+        Schema::table('hello', function(Blueprint $table) {
+            $table->string('name',200)->change();
+        });
+        return redirect('/');
+    }
+
+    public function addColumn()
+    {
+        Schema::table('helloworld', function(Blueprint $table) {
+            $table->string('email')->after('name');
+        });
+        return redirect('/');
+    }
+
+    public function deleteColumn()
+    {
+        Schema::table('helloworld', function (Blueprint $table) {
+            $table->dropColumn('email');
+            return redirect('/');
+        });
+    }
+
 }
